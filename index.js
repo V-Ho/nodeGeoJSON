@@ -1,6 +1,13 @@
 const express = require('express')
+const routes = require('./routes/api')
+const bodyParser = require('body-parser')
 
 const app = express()
+
+// use bodyParser before all other middleware
+app.use(bodyParser.json())
+
+app.use('/api', routes)
 
 app.get('/', (req, res) => {
   console.log('GET request')
